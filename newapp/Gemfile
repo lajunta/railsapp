@@ -1,0 +1,42 @@
+source "https://mirrors.tuna.tsinghua.edu.cn/rubygems/"
+gem 'rails', "~> 5.2.1"
+gem 'puma'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
+gem 'turbolinks'
+gem 'jbuilder'
+
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'slim'
+gem 'dalli'
+gem 'bson'
+gem 'rucaptcha'
+gem 'bootsnap'
+gem 'openssl'
+gem 'mongoid'
+gem 'kaminari'
+gem 'kaminari-mongoid'
+
+gem 'bootstrap-sass'
+gem 'font-awesome-sass'
+gem 'zbox'
+gem 'mongo_grid'
+gem 'lwqzx_auth'
+gem 'jquery-rails'
+gem 'bcrypt'
+
+gem_group :development, :test do
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+end
+
+gem_group :development do
+  gem 'pry'
+  gem 'stackprof'
+  gem 'rack-mini-profiler'
+  gem 'flamegraph'
+  gem 'web-console'
+  gem 'listen'
+  gem 'spring'
+  gem 'spring-watcher-listen'
+end
