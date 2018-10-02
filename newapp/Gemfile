@@ -26,11 +26,8 @@ gem 'lwqzx_auth'
 gem 'jquery-rails'
 gem 'bcrypt'
 
-gem_group :development, :test do
+group :development do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-end
-
-gem_group :development do
   gem 'pry'
   gem 'stackprof'
   gem 'rack-mini-profiler'
