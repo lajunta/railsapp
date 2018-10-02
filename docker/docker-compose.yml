@@ -1,0 +1,19 @@
+version: "3.3"
+services:
+  memcached:
+    image: memcached:latest
+  mongo:
+    image: mongo:latest
+    volumes:
+      - ~/mongodb:/data/db
+  web:
+    image: xtiku
+    environment:
+      - RAILS_ENV=production
+      - SECRET_KEY_BASE=${SECRET_KEY_BASE}
+      - RACK_ENV=production
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+      - memcached
