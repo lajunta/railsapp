@@ -1,0 +1,12 @@
+nav.navbar.navbar-default 
+  .container
+    .navbar-header 
+      = link_to icon('fas','home'), main_app.root_path, class: 'navbar-brand'
+    .collapse.navbar-collapse 
+      ul.nav.navbar-nav
+      ul.nav.navbar-nav.navbar-right
+        - if is_login?
+          li =<> link_to session[:login]
+          li = link_to icon('fas','sign-out',' 登出'),lwqzx_auth.logout_path
+        - else
+          li = link_to icon('fas','sign-in',' 登录'),lwqzx_auth.login_path

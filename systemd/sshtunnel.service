@@ -1,0 +1,14 @@
+[Unit]
+Description=SSH Tunnel
+After=network.target
+
+[Service]
+User=one
+Group=one
+WorkingDirectory=/home/one/
+Environment="AUTOSSH_GATETIME=0"
+ExecStart=/usr/bin/autossh -M 0 -o "ServerAliveInterval 30" -o "ServerAliveCountMax 3" -nNT -R 7722:localhost:22 110.120.114.112 -p 20
+
+[Install]
+WantedBy=multi-user.target
+

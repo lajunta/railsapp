@@ -1,0 +1,17 @@
+[Unit]
+Description=Go App
+Requires=network.target
+After=network.target
+
+[Service]
+User=one
+Group=one
+WorkingDirectory=/home/one/goapp
+ExecStart=/home/zxy/goapp/app &
+Type=simple
+KillMode=process
+Restart=on-failure
+RestartSec=20s
+
+[Install]
+WantedBy=multi-user.target

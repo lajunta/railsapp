@@ -1,0 +1,17 @@
+[Unit]
+Description=Rails App service 
+Requires=network.target
+After=network.target
+
+[Service]
+Environment="PATH=/bin:/sbin:/usr/sbin:/usr/bin:/usr/local/bin:/usr/local/sbin"
+Environment="SECRET_KEY_BASE=1111111111111111111111111111111111111111111111111111111111"
+WorkingDirectory=/sites/railsapp
+ExecStart=/usr/local/bin/bundle exec puma -e production -b tcp://0.0.0.0:10086
+Type=simple
+KillMode=process
+Restart=on-failure
+RestartSec=20s
+
+[Install]
+WantedBy=multi-user.target

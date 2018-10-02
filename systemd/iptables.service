@@ -1,0 +1,9 @@
+[Unit]
+Description=Restore Iptables Rules
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/iptables-restore /etc/iptables.conf
+
+[Install]
+WantedBy=multi-user.target
