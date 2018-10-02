@@ -1,4 +1,4 @@
-source "https://mirrors.tuna.tsinghua.edu.cn/rubygems/"
+source "https://rubygems.org/"
 gem 'rails', "~> 5.2.1"
 gem 'puma'
 gem 'sass-rails'
@@ -7,7 +7,7 @@ gem 'coffee-rails'
 gem 'turbolinks'
 gem 'jbuilder'
 
-gem "slim-rails", github: "slim-template/slim-rails"
+gem "slim-rails", git: "https://github.com/slim-template/slim-rails"
 gem 'dalli'
 gem 'bson'
 gem 'rucaptcha'
