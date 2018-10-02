@@ -7,8 +7,7 @@ gem 'coffee-rails'
 gem 'turbolinks'
 gem 'jbuilder'
 
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'slim'
+gem "slim-rails", github: "slim-template/slim-rails"
 gem 'dalli'
 gem 'bson'
 gem 'rucaptcha'
@@ -18,7 +17,7 @@ gem 'mongoid'
 gem 'kaminari'
 gem 'kaminari-mongoid'
 
-gem 'bootstrap-sass'
+gem 'bootstrap'
 gem 'font-awesome-sass'
 gem 'zbox'
 gem 'mongo_grid'

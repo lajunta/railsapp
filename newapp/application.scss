@@ -1,9 +1,42 @@
-/*
- *= require_tree .
- *= require_self
-*/
-@import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "./trix.css";
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.0rem;
+  line-height: 1.4;
+}
+  @media (min-width: 1080px) {
+    body {
+      font-size: calc(1.1em + 0.01vw); } }
+    .trix-content{
+      line-height: 1.6;
+      }
+
+nav.navbar{
+  margin-bottom: 1em;
+}
+
+trix-editor{
+  border: none;
+  min-height:10em;
+  outline:none !important;
+}
+.operator{
+  display: none;
+}
+figcaption {
+  text-align: center !important;
+}
+figure img{
+  display: block;
+  margin:0 auto;
+  max-width: 100%;
+  height: auto;
+}
 
