@@ -1,4 +1,28 @@
 snippet trix-editor
+	input id="content" type="hidden" name="page[content]" value=""
 	<trix-editor input="content" autofocus contenteditable role="textbox" class="trix-content my-1 py-1">
 	== @${0:page}.content
 	</trix-editor>
+
+snippet pageform
+	.row
+		.col-sm-9
+			.form-group
+				strong = f.label :标题
+				= f.text_field :title, class: "form-control"
+		.col-sm-3
+			.form-group
+				strong = f.label :标签
+				= f.text_field :tag, class: "form-control"
+	.form-group.my-3
+		input id="content" type="hidden" name="page[content]" value=""
+		<trix-editor input="content" autofocus contenteditable role="textbox" class="trix-content my-1 py-1">
+		== @page.content
+		</trix-editor>
+
+	.form-group
+		= f.label '附件'
+		= f.file_field :attach, class: "form-control-file"
+
+	.form-group
+		p.actions.text-center = f.submit "提交", class: "btn btn-primary"
