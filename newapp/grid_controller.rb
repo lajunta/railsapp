@@ -1,5 +1,8 @@
 class GridController < ApplicationController
   layout nil
+  before_action :need_login, only: [:media_upload]
+  skip_before_action :verify_authenticity_token, :only => [:media_upload]
+
 
   def download(gid=params[:id])
     id = BSON::ObjectId.from_string(gid)
@@ -18,9 +21,9 @@ class GridController < ApplicationController
       :type=>type,:disposition => "inline", stream: true,buffer_size: 4096
   end
 
-  def image_upload
+  def media_upload
     if request.post?
-      hsh = MongoGrid.uploadtogrid(params[:image],width: 960)
+      hsh = MongoGrid.uploadtogrid(params[:media],width: 960)
       json_hsh={url: see_path(hsh[:grid_id])}
       render json: json_hsh, status: :created, location: root_path
     elsif request.delete?
