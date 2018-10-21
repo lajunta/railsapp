@@ -30,7 +30,7 @@ environment "::Slim::Engine.options[:pretty] = true"
 
 run("rm app/assets/stylesheets/application.css")
 getfile("application.scss","app/assets/stylesheets/application.scss")
-getfile("trix.scss","app/assets/stylesheets/trix.scss")
+getfile("trix.css","app/assets/stylesheets/trix.css")
 
 run("rm app/assets/javascripts/application.js")
 getfile("application.js","app/assets/javascripts/application.js")
@@ -38,12 +38,15 @@ getfile("trix.js","app/assets/javascripts/trix.js")
 getfile("trix-ajax.js","app/assets/javascripts/trix-ajax.js")
 getfile("z-trix.coffee","app/assets/javascripts/z-trix.coffee")
 
+getfile("application_controller.rb","app/controllers/application_controller.rb")
 getfile("grid_controller.rb","app/controllers/grid_controller.rb")
 
 run("rm app/views/layouts/application.html.erb")
 getfile("_main_nav.slim","app/views/shared/_main_nav.slim")
 
 getfile("application.slim","app/views/layouts/application.slim")
+getfile("dockerfile","dockerfile")
+getfile("docker-compose.yml","docker-compose.yml")
 
 run("bundle install")
 generate("mongoid:config")

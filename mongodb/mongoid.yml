@@ -1,0 +1,5 @@
+development:
+  clients:
+    default:
+      database: ku_production
+      hosts: <%= ENV["KU_DBS"].split(",") %>

@@ -3,11 +3,12 @@ gem 'rails', "~> 5.2.1"
 gem 'puma'
 gem 'sass-rails'
 gem 'uglifier'
+gem 'mini_racer'
 gem 'coffee-rails'
 gem 'turbolinks'
 gem 'jbuilder'
 
-gem "slim-rails", git: "https://github.com/slim-template/slim-rails"
+gem "slim-rails"
 gem 'dalli'
 gem 'bson'
 gem 'rucaptcha'

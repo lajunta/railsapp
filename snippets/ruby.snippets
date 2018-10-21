@@ -1,4 +1,19 @@
-snippet defa
-	def ${1:method_name}
-		${0}
+snippet attachit
+	def attachit(model,attach = :attach)
+		if params[model.to_sym][attach].blank?
+			old_attach = {}
+			if params[:action] == 'update'
+				old_attach = eval("@#{model}.#{attach.to_s}")
+			end
+		else
+			if params[:action] == 'update'
+				old_attach = eval("@#{model}.#{attach.to_s}")
+				unless old_attach.blank?
+					id = BSON::ObjectId.from_string(old_attach['grid_id'])
+					MongoGrid.grid.delete(id)
+				end
+			end
+			attach=params[model.to_sym][attach]
+			MongoGrid.uploadtogrid(attach,width: 300)
+		end
 	end
