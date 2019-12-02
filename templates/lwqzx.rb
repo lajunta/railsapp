@@ -29,16 +29,18 @@ RuCaptcha.configure do
 end
 CODE
 
+run("yarn add jquery popper.js bootstrap trix --network-timeout 100000")
+run("rails webpacker:install:coffee")
+run("rm app/javascript/packs/hello_coffee.coffee")
 environment "::Mongoid::QueryCache.enabled = true"
 environment "::Slim::Engine.options[:pretty] = true"
 
 run("rm app/assets/stylesheets/application.css")
-cpfile("trix.css","app/assets/stylesheets/trix.css")
-cpfile("application.scss","app/assets/stylesheets/application.scss")
+run("mkdir app/javascript/stylesheets")
+cpfile("application.scss","app/javascript/stylesheets/application.scss")
 
 run("rm app/javascript/packs/application.js")
 cpfile("application.js","app/javascript/packs/application.js")
-cpfile("trix.js","app/javascript/packs/trix.js")
 cpfile("trix-ajax.js","app/javascript/packs/trix-ajax.js")
 cpfile("z-trix.coffee","app/javascript/packs/z-trix.coffee")
 
@@ -59,7 +61,6 @@ generate("kaminari:config")
 generate("kaminari:views bootstrap4")
 generate("controller welcome home index")
 
-after_bundle do 
-  git :init
-  git add:  "." 
-end
+cpfile("environment.js","config/webpack/environment.js")
+git :init
+git add:  "." 

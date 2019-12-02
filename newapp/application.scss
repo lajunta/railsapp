@@ -1,7 +1,5 @@
-@import "bootstrap";
-@import "font-awesome-sprockets";
-@import "font-awesome";
-@import "./trix.css";
+@import "bootstrap/scss/bootstrap";
+@import "trix/dist/trix";
 
 body {
   height: 100%;
@@ -39,4 +37,3 @@ figure img{
   max-width: 100%;
   height: auto;
 }
-
