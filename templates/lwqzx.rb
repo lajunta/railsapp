@@ -1,10 +1,14 @@
+def cpfile(from,to)
+  src = "/home/zxy/railsapp/newapp"
+	run("cp #{src}/#{from} #{to}")
+end
 def getfile(from,to)
   tempath = "https://raw.githubusercontent.com/lajunta/railsapp/master/newapp"
 	run("curl -sS --create-dirs -o #{to} #{tempath}/#{from}")
 end
 
 run("rm Gemfile")
-getfile("Gemfile","Gemfile")
+cpfile("Gemfile","Gemfile")
 
 route %q(root to: 'welcome#index')
 route %q(get "download/:id" => "grid#download" , :as=>:download)
@@ -29,24 +33,25 @@ environment "::Mongoid::QueryCache.enabled = true"
 environment "::Slim::Engine.options[:pretty] = true"
 
 run("rm app/assets/stylesheets/application.css")
-getfile("application.scss","app/assets/stylesheets/application.scss")
-getfile("trix.css","app/assets/stylesheets/trix.css")
+cpfile("trix.css","app/assets/stylesheets/trix.css")
+cpfile("application.scss","app/assets/stylesheets/application.scss")
 
-run("rm app/assets/javascripts/application.js")
-getfile("application.js","app/assets/javascripts/application.js")
-getfile("trix.js","app/assets/javascripts/trix.js")
-getfile("trix-ajax.js","app/assets/javascripts/trix-ajax.js")
-getfile("z-trix.coffee","app/assets/javascripts/z-trix.coffee")
+run("rm app/javascript/packs/application.js")
+cpfile("application.js","app/javascript/packs/application.js")
+cpfile("trix.js","app/javascript/packs/trix.js")
+cpfile("trix-ajax.js","app/javascript/packs/trix-ajax.js")
+cpfile("z-trix.coffee","app/javascript/packs/z-trix.coffee")
 
-getfile("application_controller.rb","app/controllers/application_controller.rb")
-getfile("grid_controller.rb","app/controllers/grid_controller.rb")
+cpfile("application_controller.rb","app/controllers/application_controller.rb")
+cpfile("grid_controller.rb","app/controllers/grid_controller.rb")
 
 run("rm app/views/layouts/application.html.erb")
-getfile("_main_nav.slim","app/views/shared/_main_nav.slim")
+run("mkdir app/views/shared")
+cpfile("_main_nav.slim","app/views/shared/_main_nav.slim")
 
-getfile("application.slim","app/views/layouts/application.slim")
-getfile("dockerfile","dockerfile")
-getfile("docker-compose.yml","docker-compose.yml")
+cpfile("dockerfile","dockerfile")
+cpfile("docker-compose.yml","docker-compose.yml")
+cpfile("application.slim","app/views/layouts/application.slim")
 
 run("bundle install")
 generate("mongoid:config")

@@ -1,17 +1,13 @@
-(function(){
+(function () {
   var HOST = "/media_upload/"
 
-  addEventListener("trix-attachment-remove", function(event) {
-    console.log(11)
-    console.log(event.attachment)
+  addEventListener("trix-attachment-remove", function (event) {
     if (event.attachment.getURL()) {
-      console.log(22)
       removeAttachment(event.attachment)
     }
   })
 
   function removeAttachment(attachment) {
-    console.log(33)
     var grid_id = attachment.getURL().split("/")[2]
     var xhr = new XMLHttpRequest()
 
@@ -24,7 +20,7 @@
   }
 
 
-  addEventListener("trix-attachment-add", function(event) {
+  addEventListener("trix-attachment-add", function (event) {
     if (event.attachment.file) {
       uploadAttachment(event.attachment)
     }
@@ -38,12 +34,12 @@
     xhr.open("POST", HOST, true)
     xhr.responseType = "json"
 
-    xhr.upload.addEventListener("progress", function(event) {
+    xhr.upload.addEventListener("progress", function (event) {
       var progress = event.loaded / event.total * 100
       attachment.setUploadProgress(progress)
     })
 
-    xhr.addEventListener("load", function(event) {
+    xhr.addEventListener("load", function (event) {
       if (xhr.status == 201) {
         attachment.setAttributes({ url: xhr.response.url })
       }

@@ -1,7 +1,7 @@
 run("rm Gemfile")
 run("touch Gemfile")
 add_source "https://gems.ruby-china.org/"
-gem 'rails', "~> 5.1.4"
+gem 'rails', "~> 5.2.3"
 gem 'puma'
 gem 'sass-rails'
 gem 'bootsnap'
