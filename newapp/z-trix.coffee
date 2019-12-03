@@ -1,5 +1,3 @@
-Trix = require('trix')
-
 {lang} = Trix.config
 
 Trix.config.toolbar =
@@ -20,20 +18,18 @@ Trix.config.toolbar =
 		<button type="button" class="trix-button trix-button--icon trix-button--icon-increase-nesting-level" data-trix-action="increaseNestingLevel" title="#{lang.indent}" tabindex="-1">左缩进</button>
 		</span>
 		<span class="trix-button-group-spacer"></span>
-		<span class="trix-button-group trix-button-group--history-tools" data-trix-button-group="history-tools">
-		<button type="button" class="trix-button trix-button--icon trix-button--icon-undo" data-trix-action="undo" data-trix-key="z" title="#{lang.undo}" tabindex="-1">撤销</button>
-		<button type="button" class="trix-button trix-button--icon trix-button--icon-redo" data-trix-action="redo" data-trix-key="shift+z" title="#{lang.redo}" tabindex="-1">重做</button>
+		<span class="trix-button-group trix-button-group--text-tools" data-trix-button-group="text-tools">
+    <button type="button" class="trix-button trix-button--icon trix-button--icon-attach" data-trix-action="x-insert-image" tabindex="-1"></button>
 		</span>
 		</div>
+
 		<div class="trix-dialogs" data-trix-dialogs>
+
 		<div class="trix-dialog trix-dialog--link" data-trix-dialog="href" data-trix-dialog-attribute="href">
 		<div class="trix-dialog__link-fields">
 		<input type="url" name="href" class="trix-input trix-input--dialog" placeholder="#{lang.urlPlaceholder}" aria-label="#{lang.url}" required data-trix-input>
-		<div class="trix-button-group">
-		<input type="button" class="trix-button trix-button--dialog" value="#{lang.link}" data-trix-method="setAttribute">
-		<input type="button" class="trix-button trix-button--dialog" value="#{lang.unlink}" data-trix-method="removeAttribute">
 		</div>
 		</div>
-		</div>
+
 		</div>
 		"""

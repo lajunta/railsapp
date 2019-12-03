@@ -1,3 +1,6 @@
+require 'grpc'
+require 'ecole_services_pb'
+
 class ApplicationController < ActionController::Base
 
 	def attachit(model,attach = :attach)
@@ -19,7 +22,6 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
-
 	def need_super_admin
 		unless is_super_admin?
 			flash[:alert] = "你不能进行这个操作"
@@ -31,30 +33,28 @@ class ApplicationController < ActionController::Base
 		return session[:login] == "zxy"
 	end
 
-	def is_repo_member?(repo_name,user_name)
-		repo = Repo.where(name: repo_name,members: user_name).first
-		return repo ? true : false
-	end
+  def stub 
+    Ecole::Ecole::Stub.new(ENV['GRPCD_ADDRESS'], :this_channel_is_insecure)
+  end  
 
-	def need_repo_member(repo_name,user_name)
-		unless need_repo_member(repo_name,user_name)
-			flash[:alert] = "你不是这个资源库的成员"
-			redirect_to repos_path and return
-		end
-	end
+  def current_week
+    request = Ecole::CurrentWeekRequest.new()
+    response = stub.current_week(request)
+    return response.WeekNum
+  end
 
-	def is_repo_admin?(repo_name,user_name)
-		repo = Repo.where(name: repo_name,admins: user_name).first
-		return repo ? true : false
-	end
+  def semesters
+    request = Ecole::SemestersRequest.new()
+    semesters = stub.semesters(request).Semes
+    return semesters.map{|s| s.Name}
+  end
 
-	def need_repo_admin(repo_name,user_name)
-		unless need_repo_admin(repo_name,user_name)
-			flash[:alert] = "你不是这个资源库的管理员"
-			redirect_to repos_path and return
-		end
-	end
+  def current_semester
+    request = Ecole::CurrentSemesterRequest.new()
+    semester = stub.current_semester(request)
+    return semester.Name
+  end
 
-	helper_method :is_super_admin?, :is_repo_member?, :is_repo_admin?
+	helper_method :is_super_admin?
 
 end

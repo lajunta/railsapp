@@ -29,14 +29,16 @@ RuCaptcha.configure do
 end
 CODE
 
-run("yarn add jquery popper.js bootstrap trix --network-timeout 100000")
-run("rails webpacker:install:coffee")
-run("rm app/javascript/packs/hello_coffee.coffee")
+#run("yarn add jquery popper.js bootstrap trix --network-timeout 100000")
+#run("rails webpacker:install:coffee")
+#run("rm app/javascript/packs/hello_coffee.coffee")
 environment "::Mongoid::QueryCache.enabled = true"
 environment "::Slim::Engine.options[:pretty] = true"
 
 run("rm app/assets/stylesheets/application.css")
 run("mkdir app/javascript/stylesheets")
+run("mkdir proto")
+cpfile("ecole.proto","proto/ecole.proto")
 cpfile("application.scss","app/javascript/stylesheets/application.scss")
 
 run("rm app/javascript/packs/application.js")
@@ -56,6 +58,8 @@ cpfile("docker-compose.yml","docker-compose.yml")
 cpfile("application.slim","app/views/layouts/application.slim")
 
 run("bundle install")
+run("grpc_tools_ruby_protoc -Iproto --ruby_out=lib --grpc_out=lib proto/ecole.proto")
+
 generate("mongoid:config")
 generate("kaminari:config")
 generate("kaminari:views bootstrap4")
