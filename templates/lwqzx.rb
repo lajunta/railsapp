@@ -58,13 +58,14 @@ cpfile("docker-compose.yml","docker-compose.yml")
 cpfile("application.slim","app/views/layouts/application.slim")
 
 run("bundle install")
-run("grpc_tools_ruby_protoc -Iproto --ruby_out=lib --grpc_out=lib proto/ecole.proto")
+#run("grpc_tools_ruby_protoc -Iproto --ruby_out=lib --grpc_out=lib proto/ecole.proto")
 
 generate("mongoid:config")
 generate("kaminari:config")
 generate("kaminari:views bootstrap4")
 generate("controller welcome home index")
 
+run("mkdir config/webpack")
 cpfile("environment.js","config/webpack/environment.js")
 git :init
 git add:  "." 

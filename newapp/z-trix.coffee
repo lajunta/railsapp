@@ -1,3 +1,4 @@
+Trix = require("trix")
 {lang} = Trix.config
 
 Trix.config.toolbar =

@@ -7,7 +7,6 @@
 source "http://gems.ruby-china.com/"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
 gem 'rails'
 gem 'puma'
 gem 'sass-rails'
@@ -18,9 +17,8 @@ gem 'turbolinks'
 gem 'jbuilder'
 gem 'webpacker'
 gem "rest-client"
-gem "slim-rails", git: "https://github.com/slim-template/slim-rails"
+gem "slim-rails"
 gem 'dalli'
-gem 'grpc'
 gem 'bson'
 gem 'rucaptcha'
 gem 'bootsnap'
