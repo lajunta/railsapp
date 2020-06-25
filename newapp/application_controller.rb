@@ -1,5 +1,5 @@
 require 'grpc'
-require 'ecole_services_pb'
+require 'proto/grpcd_services_pb'
 
 class ApplicationController < ActionController::Base
 
@@ -34,27 +34,27 @@ class ApplicationController < ActionController::Base
 	end
 
   def stub 
-    Ecole::Ecole::Stub.new(ENV['GRPCD_ADDRESS'], :this_channel_is_insecure)
+    Grpcd::Grpcd::Stub.new(ENV['GRPCD_ADDRESS'], :this_channel_is_insecure)
   end  
 
   def current_week
-    request = Ecole::CurrentWeekRequest.new()
+    request = Grpcd::CurrentWeekRequest.new()
     response = stub.current_week(request)
     return response.WeekNum
   end
 
   def semesters
-    request = Ecole::SemestersRequest.new()
+    request = Grpcd::SemestersRequest.new()
     semesters = stub.semesters(request).Semes
     return semesters.map{|s| s.Name}
   end
 
   def current_semester
-    request = Ecole::CurrentSemesterRequest.new()
+    request = Grpcd::CurrentSemesterRequest.new()
     semester = stub.current_semester(request)
     return semester.Name
   end
 
-	helper_method :is_super_admin?
+	helper_method :is_super_admin?,:current_semester
 
 end

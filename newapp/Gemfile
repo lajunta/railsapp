@@ -2,27 +2,22 @@
 # gem install grpc-tools
 # then make proto file to lib directory
 # grpc_tools_ruby_protoc -Iproto --ruby_out=lib --grpc_out=lib proto/ecole.proto
-#
+# grpc_tools_ruby_protoc -I /usr/local/include -I. -I $GOPATH/src -I $GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis  -I proto --ruby_out=lib --grpc_out=lib proto/ecole.proto
 
 source "http://gems.ruby-china.com/"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'rails'
+gem 'grpc'
 gem 'puma'
 gem 'sass-rails'
-gem 'uglifier'
-gem 'mini_racer'
-gem 'coffee-rails'
 gem 'turbolinks'
 gem 'jbuilder'
 gem 'webpacker'
-gem "rest-client"
 gem "slim-rails"
 gem 'dalli'
-gem 'bson'
 gem 'rucaptcha'
 gem 'bootsnap'
-gem 'openssl'
 gem 'mongoid'
 gem 'font-awesome-sass'
 gem 'kaminari'
@@ -30,14 +25,8 @@ gem 'kaminari-mongoid'
 gem 'zbox'
 gem 'mongo_grid'
 gem 'lwqzx_auth'
-gem 'bcrypt'
 
 group :development do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'pry'
-  gem 'stackprof'
-  gem 'rack-mini-profiler'
-  gem 'flamegraph'
   gem 'web-console'
   gem 'listen'
   gem 'spring'

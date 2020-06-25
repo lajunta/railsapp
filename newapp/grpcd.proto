@@ -1,0 +1,118 @@
+syntax = "proto3";
+
+package grpcd;
+
+
+import "google/api/annotations.proto";
+
+service Grpcd {
+    rpc CourseNames(CourseNamesRequest) returns (CourseNamesReply) {
+        option (google.api.http) = {
+            post: "/api/course_names"
+            body: "*"
+        };
+    };
+    rpc GroupNames(GroupNamesRequest) returns (GroupNamesReply) {
+        option (google.api.http) = {
+            post: "/api/group_names"
+            body: "*"
+        };
+    };
+    rpc Group(GroupRequest) returns (GroupReply) {
+        option (google.api.http) = {
+            post: "/api/group"
+            body: "*"
+        };
+    };
+    rpc Semesters(SemestersRequest) returns (SemestersReply) {
+        option (google.api.http) = {
+            post: "/api/semesters"
+            body: "*"
+        };
+    };
+    rpc CurrentSemester(CurrentSemesterRequest) returns (SemesterReply) {
+        option (google.api.http) = {
+            post: "/api/current_semester"
+            body: "*"
+        };
+    };
+    rpc CurrentWeek(CurrentWeekRequest) returns (CurrentWeekReply) {
+        option (google.api.http) = {
+            post: "/api/current_week"
+            body: "*"
+        };
+    };
+    rpc Auth(AuthRequest) returns (AuthReply) {
+        option (google.api.http) = {
+            post: "/api/auth"
+            body: "*"
+        };
+    };
+}
+
+message CurrentWeekRequest {
+
+}
+
+message CurrentWeekReply {
+   int32 WeekNum = 1; 
+}
+
+message CourseNamesRequest{
+   
+}
+
+message CourseNamesReply{
+    repeated string Names = 1;
+}
+
+message GroupNamesRequest{
+   
+}
+
+message GroupNamesReply{
+    repeated string Names = 1;
+}
+
+message GroupRequest {
+    string Name = 1;
+}
+
+message GroupReply {
+    string Name = 1;
+    string Master = 2;
+    string Members = 3;
+}
+
+message SemestersRequest{
+    
+}
+
+message SemesterReply{
+    string ID = 1;
+    string Name = 2;
+    string ShortName = 3;
+    string BeginOn = 4;
+    string EndOn = 5;  
+    string Current = 6; 
+}
+
+message SemestersReply{
+    repeated SemesterReply Semes = 1;
+}
+
+message CurrentSemesterRequest {
+
+}
+
+message AuthRequest{
+    string Login = 1;
+    string Password = 2;
+}
+
+message AuthReply{
+    bool Logined = 1;
+    string Login = 2;
+    string RealName = 3;
+    string Tags = 4;
+}

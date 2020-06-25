@@ -1,0 +1,21 @@
+zh-CN:
+  views:
+    pagination:
+      first: "&laquo; 第1页"
+      last: "最后页 &raquo;"
+      previous: "&lsaquo; 前一页"
+      next: "下一页 &rsaquo;"
+      truncate: "..."
+  mongoid:
+    errors:
+      messages:
+        invalid_value: "无效的值"
+en:
+  views:
+    pagination:
+      first: "&laquo; 第1页"
+      last: "最后页 &raquo;"
+      previous: "&lsaquo; 前一页"
+      next: "下一页 &rsaquo;"
+      truncate: "..."
+

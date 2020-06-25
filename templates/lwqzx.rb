@@ -29,22 +29,21 @@ RuCaptcha.configure do
 end
 CODE
 
-#run("yarn add jquery popper.js bootstrap trix --network-timeout 100000")
-#run("rails webpacker:install:coffee")
-#run("rm app/javascript/packs/hello_coffee.coffee")
+run("yarn add jquery popper.js bootstrap trix --network-timeout 100000")
 environment "::Mongoid::QueryCache.enabled = true"
 environment "::Slim::Engine.options[:pretty] = true"
 
 run("rm app/assets/stylesheets/application.css")
 run("mkdir app/javascript/stylesheets")
 run("mkdir proto")
-cpfile("ecole.proto","proto/ecole.proto")
+cpfile("grpcd.proto","proto/grpcd.proto")
 cpfile("application.scss","app/javascript/stylesheets/application.scss")
 
 run("rm app/javascript/packs/application.js")
 cpfile("application.js","app/javascript/packs/application.js")
 cpfile("trix-ajax.js","app/javascript/packs/trix-ajax.js")
 cpfile("z-trix.coffee","app/javascript/packs/z-trix.coffee")
+cpfile(".npmrc",".npmrc")
 
 cpfile("application_controller.rb","app/controllers/application_controller.rb")
 cpfile("grid_controller.rb","app/controllers/grid_controller.rb")
@@ -58,14 +57,20 @@ cpfile("docker-compose.yml","docker-compose.yml")
 cpfile("application.slim","app/views/layouts/application.slim")
 
 run("bundle install")
-#run("grpc_tools_ruby_protoc -Iproto --ruby_out=lib --grpc_out=lib proto/ecole.proto")
+run("grpc_tools_ruby_protoc -I /usr/local/include -I. -I $GOPATH/src -I $GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis -I proto --ruby_out=lib --grpc_out=lib proto/grpcd.proto")
 
 generate("mongoid:config")
 generate("kaminari:config")
-generate("kaminari:views bootstrap4")
+#generate("kaminari:views bootstrap4")
+run("mkdir -p app/views/kaminari")
+run("cp /home/zxy/railsapp/newapp/views/* app/views/kaminari/")
+cpfile("locales.yml","config/locales/en.yml")
 generate("controller welcome home index")
 
 run("mkdir config/webpack")
+run("rails webpacker:install")
+run("rails webpacker:install:coffee")
+run("rm app/javascript/packs/hello_coffee.coffee")
 cpfile("environment.js","config/webpack/environment.js")
 git :init
 git add:  "." 
