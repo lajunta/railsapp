@@ -56,38 +56,26 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
-    bcrypt (3.1.13)
     bindex (0.8.1)
     bootsnap (1.4.6)
       msgpack (~> 1.0)
     bson (4.9.3)
     builder (3.2.4)
-    byebug (11.1.3)
-    coderay (1.1.3)
-    coffee-rails (5.0.0)
-      coffee-script (>= 2.2.0)
-      railties (>= 5.2.0)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.12.2)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
     dalli (2.7.10)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.9.0)
-    execjs (2.7.0)
     ffi (1.13.1)
-    flamegraph (0.9.5)
     font-awesome-sass (5.13.0)
       sassc (>= 1.11)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    google-protobuf (3.12.2-x86_64-linux)
+    google-protobuf (3.12.2)
     googleapis-common-protos-types (1.0.5)
       google-protobuf (~> 3.11)
-    grpc (1.28.0-x86_64-linux)
+    grpc (1.28.0)
       google-protobuf (~> 3.11)
       googleapis-common-protos-types (~> 1.0)
     http-accept (1.7.0)
@@ -112,7 +100,6 @@ GEM
     kaminari-mongoid (1.0.1)
       kaminari-core (~> 1.0)
       mongoid
-    libv8 (7.3.492.27.1-x86_64-linux)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -129,11 +116,11 @@ GEM
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2020.0512)
-    mimemagic (0.3.5)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    mini_racer (0.2.14)
-      libv8 (> 7.3)
     minitest (5.14.1)
     mongo (2.12.1)
       bson (>= 4.8.2, < 5.0.0)
@@ -143,18 +130,12 @@ GEM
       mongo (>= 2.7.0, < 3.0.0)
     msgpack (1.3.3)
     netrc (0.11.0)
-    nio4r (2.5.2)
+    nio4r (2.5.7)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
-    openssl (2.2.0)
-    pry (0.13.1)
-      coderay (~> 1.1)
-      method_source (~> 1.0)
-    puma (4.3.5)
+    puma (4.3.8)
       nio4r (~> 2.0)
     rack (2.2.3)
-    rack-mini-profiler (2.0.2)
-      rack (>= 1.2.0)
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
@@ -225,7 +206,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    stackprof (0.2.15)
     temple (0.8.2)
     thor (1.0.1)
     thread_safe (0.3.6)
@@ -235,8 +215,6 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
-    uglifier (4.2.0)
-      execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.7)
@@ -260,13 +238,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bcrypt
   bootsnap
-  bson
-  byebug
-  coffee-rails
   dalli
-  flamegraph
   font-awesome-sass
   grpc
   jbuilder
@@ -274,23 +247,16 @@ DEPENDENCIES
   kaminari-mongoid
   listen
   lwqzx_auth
-  mini_racer
   mongo_grid
   mongoid
-  openssl
-  pry
   puma
-  rack-mini-profiler
   rails
-  rest-client
   rucaptcha
   sass-rails
   slim-rails
   spring
   spring-watcher-listen
-  stackprof
   turbolinks
-  uglifier
   web-console
   webpacker
   zbox
